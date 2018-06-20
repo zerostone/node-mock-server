@@ -22,6 +22,22 @@ module.exports = function(serverOptions, _getFile) {
 	var pathExpected = './test/expected/mock-server',
 		baseUrl = serverOptions.urlBase + serverOptions.urlPath;
 
+	describe('method _getHttpStatusFromFilePath', function () {
+		var getStatus = MockController.prototype._getHttpStatusFromFilePath;
+
+		it('undefined', function () {
+			assert.deepEqual(getStatus('/Users/test/projects/node-mock-server/test/../demo/rest/_fallbacks/#/OPTIONS/mock/success.json'), undefined);
+		});
+
+		it('300', function () {
+			assert.deepEqual(getStatus('/Users/test/projects/node-mock-server/test/../demo/rest/_fallbacks/#/OPTIONS/mock/success-300.json'), 300);
+		});
+
+		it('PR-326', function () {
+			assert.deepEqual(getStatus('/Users/test/projects/node-mock-server/test/../demo/rest/_fallbacks/#/OPTIONS/mock/PR-326/success.json'), undefined);
+		});
+	});
+
 	describe('method _getExpectedResponse', function () {
 
 		var func = MockController.prototype._getExpectedResponse;
