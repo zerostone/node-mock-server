@@ -9,12 +9,12 @@ The middleware function will be called, in case of "middleware" is selected. It'
 
 See [node-mock-server options](/doc/readme-options.md)
 
-## Parameter[1] responseOptions
+## Parameter[1] requestOptions
 
-| attribute     | type          | description  |
-| ------------- | ------------- | ----- |
-| req           | Object        | The (request object)[http://expressjs.com/en/api.html#req]. |
-| res           | Object        | The (response object)[http://expressjs.com/en/api.html#res]. |
-| method        | string        | Contains a string corresponding to the HTTP method of the request: GET, POST, PUT, and so on. |
-| dir           | string        | The directory of selected response |
-| preferences   | Object        | The preferences object |
+| attribute   | type   | description                                                                                   |
+| ----------- | ------ | --------------------------------------------------------------------------------------------- |
+| req         | Object | The (request object)[http://expressjs.com/en/api.html#req].                                   |
+| res         | Object | The (response object)[http://expressjs.com/en/api.html#res].                                  |
+| method      | string | Contains a string corresponding to the HTTP method of the request: GET, POST, PUT, and so on. |
+| dir         | string | The directory of selected response                                                            |
+| preferences | Object | The preferences object                                                                        |
