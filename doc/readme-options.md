@@ -248,3 +248,10 @@ Optional
 
 A string that defines and enables the options fallback.
 This allows you to define a fallback for every options call except there is one defined for the affected endpoint.
+
+
+#### options.useTrailingSlashes
+Type: `Boolean`
+Optional
+
+A boolean to decide to use trailing slashes in URL if your endpoints always ending with it.
