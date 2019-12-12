@@ -68,7 +68,7 @@
     "react-dev-utils": "5.0.2",
     "request": "2.88.0",
     "yamljs": "0.3.0",
-    "snyk": "^1.230.5"
+    "snyk": "^1.258.2"
   },
   "devDependencies": {
     "@namics/eslint-config": "6.0.1",
