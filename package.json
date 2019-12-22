@@ -13,14 +13,15 @@
     "url": "https://github.com/smollweide/node-mock-server/issues"
   },
   "scripts": {
-    "start": "nodemon demo/index.js",
+    "demo": "nodemon demo/index.js",
     "test": "mocha --exit test/tests.js",
     "test:watch": "mocha --colors test/tests.js",
     "posttest": "npm run lint",
     "lint": "npm run lint:js",
     "lint:js": "node_modules/.bin/eslint .",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "start": "dash4"
   },
   "main": "mock-server.js",
   "keywords": [
@@ -52,7 +53,7 @@
     "body-parser": "1.19.0",
     "chip": "0.0.5",
     "cookie-parser": "1.4.4",
-    "deasync": "0.1.16",
+    "deasync": "0.1.19",
     "ejs": "2.6.1",
     "es6-promise-polyfill": "1.2.0",
     "express": "4.17.1",
@@ -69,6 +70,12 @@
     "yamljs": "0.3.0"
   },
   "devDependencies": {
+    "@dash4/plugin-code-coverage": "0.7.1",
+    "@dash4/plugin-dependencies": "0.7.1",
+    "@dash4/plugin-npm-scripts": "0.7.1",
+    "@dash4/plugin-readme": "0.7.1",
+    "@dash4/plugin-terminal": "0.7.1",
+    "@dash4/server": "0.7.1",
     "@namics/eslint-config": "8.0.4",
     "ajv": "6.10.2",
     "babel-eslint": "10.0.3",
