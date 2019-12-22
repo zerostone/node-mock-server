@@ -10,8 +10,6 @@ const { PluginDependencies } = require('@dash4/plugin-dependencies');
 const { PluginTerminal } = require('@dash4/plugin-terminal');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-readme
 const { PluginReadme } = require('@dash4/plugin-readme');
-// https://github.com/smollweide/dash4/tree/master/plugins/plugin-code-coverage
-const { PluginCodeCoverage } = require('@dash4/plugin-code-coverage');
 // https://github.com/smollweide/dash4/tree/master/plugins/plugin-npm-scripts
 const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
 
@@ -41,10 +39,13 @@ async function getConfig() {
 							autostart: false,
 						}),
 						new PluginTerminal({
+							cmd: 'npm run demo-tunnel',
+							autostart: false,
+						}),
+						new PluginTerminal({
 							cmd: 'npm run test:watch',
 							autostart: false,
 						}),
-						new PluginCodeCoverage(),
 					],
 				],
 			},

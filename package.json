@@ -13,14 +13,13 @@
     "url": "https://github.com/smollweide/node-mock-server/issues"
   },
   "scripts": {
-    "demo": "nodemon demo/index.js",
+    "demo": "node demo/index.js",
+    "demo-tunnel": "node demo/tunnel.js",
     "test": "mocha --exit test/tests.js",
     "test:watch": "mocha --colors test/tests.js",
     "posttest": "npm run lint",
     "lint": "npm run lint:js",
     "lint:js": "node_modules/.bin/eslint .",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect",
     "start": "dash4"
   },
   "main": "mock-server.js",
@@ -50,7 +49,6 @@
   "private": false,
   "license": "MIT",
   "dependencies": {
-    "body-parser": "1.19.0",
     "chip": "0.0.5",
     "cookie-parser": "1.4.4",
     "deasync": "0.1.19",
@@ -70,7 +68,6 @@
     "yamljs": "0.3.0"
   },
   "devDependencies": {
-    "@dash4/plugin-code-coverage": "0.7.1",
     "@dash4/plugin-dependencies": "0.7.1",
     "@dash4/plugin-npm-scripts": "0.7.1",
     "@dash4/plugin-readme": "0.7.1",
@@ -82,9 +79,6 @@
     "eslint": "6.7.2",
     "eslint-plugin-import": "2.19.1",
     "mocha": "5.2.0",
-    "nodemon": "2.0.2",
-    "react-dev-utils": "5.0.2",
-    "snyk": "^1.230.5"
-  },
-  "snyk": true
+    "react-dev-utils": "5.0.2"
+  }
 }

@@ -5,7 +5,6 @@ var express = require('express');
 var https = require('https');
 var openBrowser = require('react-dev-utils/openBrowser');
 var jQueryExtend = require('extend');
-var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var log = require('chip')();
 var defaultOptions = require('../lib/defaults/options-defaults');
@@ -25,8 +24,8 @@ var logFunc = function () {
 	}
 };
 
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 function setHeaders(res) {
