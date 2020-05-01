@@ -20,7 +20,9 @@
     "posttest": "npm run lint",
     "lint": "npm run lint:js",
     "lint:js": "node_modules/.bin/eslint .",
-    "start": "dash4"
+    "start": "dash4",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "main": "mock-server.js",
   "keywords": [
@@ -66,7 +68,8 @@
     "p-series": "1.1.0",
     "request": "2.88.0",
     "yamljs": "0.3.0",
-    "react-dev-utils": "5.0.2"
+    "react-dev-utils": "5.0.2",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@dash4/plugin-dependencies": "0.7.1",
@@ -80,5 +83,6 @@
     "eslint": "6.7.2",
     "eslint-plugin-import": "2.19.1",
     "mocha": "5.2.0"
-  }
+  },
+  "snyk": true
 }
