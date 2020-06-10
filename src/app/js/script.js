@@ -360,7 +360,9 @@
 			});
 		});
 
-		$('.btn-save-json').on('click', function () {
+		$('.btn-save-json').on('click', function (event) {
+			$(this).button('loading');
+
 			var modal = $(this).closest('.modal-method');
 			var checkedRadio = modal.find('.tab-pane-mock :radio:checked');
 			var data = checkedRadio.data();
@@ -372,8 +374,12 @@
 				var editorElem = modal.find('.code-editor').get(0);
 				if(editorElem) {
 					var text = ace.edit(editorElem).getValue();
-					$.post('/service/text?path=' + encodeURIComponent(path + fileName), { text: text });
+					$.post('/service/text?path=' + encodeURIComponent(path + fileName), { text: text }).always(function() {
+						$(event.target).button('reset');
+					});
 				}
+			} else {
+				$(this).button('reset')
 			}
 		});
 
@@ -398,7 +404,7 @@
 				url: '/service/response/' + path + '/' + method,
 				type: 'post',
 				data: {
-					name,
+					name: name.toLowerCase(),
 				},
 				success: function () {
 					window.location.reload();
