@@ -1,16 +1,16 @@
 {
-  "name": "node-mock-server",
-  "version": "0.25.4",
+  "name": "node-mocker-server",
+  "version": "0.0.1",
   "description": "File based Node REST API mock server",
-  "email": "simon.mollweide@web.de",
-  "author": "Simon Mollweide <simon.mollweide@web.de>",
-  "url": "https://github.com/smollweide/node-mock-server",
+  "email": "choushi@gmail.com",
+  "author": "Stone Shi <choushi@gmail.com>",
+  "url": "https://github.com/zerostone/node-mock-server",
   "repository": {
     "type": "github",
-    "url": "https://github.com/smollweide/node-mock-server"
+    "url": "https://github.com/zerostone/node-mock-server"
   },
   "bugs": {
-    "url": "https://github.com/smollweide/node-mock-server/issues"
+    "url": "https://github.com/zerostone/node-mock-server/issues"
   },
   "scripts": {
     "demo": "node demo/index.js",

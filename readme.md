@@ -1,11 +1,17 @@
 # node-mock-server
 
-> File based Node REST API mock server
 
-[![Build status](https://img.shields.io/travis/smollweide/node-mock-server/master.svg)](https://travis-ci.org/smollweide/node-mock-server)
-[![npm](https://badge.fury.io/js/node-mock-server.svg)](https://badge.fury.io/js/node-mock-server)
-[![npm](https://img.shields.io/npm/dt/node-mock-server.svg)](https://www.npmjs.com/package/node-mock-server)
-[![Codestyle](https://img.shields.io/badge/codestyle-namics-green.svg)](https://github.com/namics/eslint-config-namics)
+> This repository is copied from https://github.com/smollweide/node-mock-server (based on `v0.25.4`).
+>
+> The original version can only run on local environment, since it relys on `open` or `start` command to open the files for editting responses etc.. However we may need to run the mock server on a server or docker environment, so change it a little bit for that purpose.
+> 
+> Changes made:
+> * Add code editor on the method modal, when selecting responses, persisted response text would be reflected in the editor
+> * Add the `Save` button on the method modal, to persist modified response
+> * Remove preview feature which relys `open` on the method modal
+
+
+> File based Node REST API mock server
 
 ![node-mock-server-ui.png](https://cloud.githubusercontent.com/assets/2912007/26034363/c509d2c2-38bb-11e7-9175-4a151f7a550f.jpg)
 
