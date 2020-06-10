@@ -14,13 +14,48 @@
 
 		init();
 
+		function loadResponseContent(file, editor) {
+			$.ajax({
+				url: '/service/text?path=' + encodeURIComponent(file),
+				dataType: 'text'
+			}).done(function (content) {
+				if (editor) {
+					editor.setValue(content);
+				}
+			}).fail(function (err) {
+				console.error(err);
+			});
+		}
+
 		$('.modal')
 			.on('shown.bs.modal', function (event) {
 				var $modal = $(event.currentTarget);
 				window.location.hash = $modal.attr('id');
+
+				// create editor
+				var editorElem = $(this).find('.code-editor').get(0);
+				if (editorElem) {
+					var editor = ace.edit(editorElem);
+					editor.setTheme('ace/theme/monokai');
+					editor.session.setMode('ace/mode/javascript');
+					editor.session.setUseWorker(false);
+
+					var $selectedRadio = $(this).find('.js-change-response-data:checked');
+					if($selectedRadio.length) {
+						var path = $selectedRadio.data('path');
+						var fileName = $selectedRadio.val();
+						loadResponseContent(path + fileName, editor);
+					}
+				}
 			})
 			.on('hide.bs.modal', function () {
 				window.location.hash = '';
+
+				// destroy editor
+				var editorElem = $(this).find('.code-editor').get(0);
+				if (editorElem) {
+					ace.edit(editorElem).destroy();
+				}
 			});
 
 		$('.page-header pre code, .top-resource-description pre code').each(function (i, block) {
@@ -117,7 +152,7 @@
 				$(event.currentTarget).attr('data-status', 'not-saved');
 			}).
 			on('change', _storeSettings)
-		;
+			;
 
 		$('.js-change-response-data').on('change', function (event) {
 			var $radio = $(event.currentTarget);
@@ -131,7 +166,26 @@
 				},
 			});
 
-		});
+			// Get response content
+			var data = $radio.data();
+			var path = data.path;
+			var allowEdit = data.allowEdit;
+
+			var $modal = $radio.closest('.modal');
+			var editorElem = $modal.find('.code-editor').get(0);
+			var editor = null;
+			if (editorElem) {
+				editor = ace.edit(editorElem);
+				editor.setValue('');
+			}
+
+			$modal.find('.btn-save-json').prop('disabled', !allowEdit);
+			if (!allowEdit) {
+				return;
+			}
+
+			loadResponseContent(path + event.currentTarget.value, editor);		
+		});		
 
 		/**
 		 * @param {Array} data - list of messages
@@ -297,11 +351,30 @@
 			});
 		});
 
+
+
 		$('.js-open-ide').on('click', function (event) {
 			var path = $(event.currentTarget).data('path');
 			$.ajax({
 				url: '/service/open?path=' + encodeURIComponent(path),
 			});
+		});
+
+		$('.btn-save-json').on('click', function () {
+			var modal = $(this).closest('.modal-method');
+			var checkedRadio = modal.find('.tab-pane-mock :radio:checked');
+			var data = checkedRadio.data();
+			var allowEdit = data.allowEdit;
+			var path = data.path;
+
+			if (allowEdit) {
+				var fileName = checkedRadio.val();
+				var editorElem = modal.find('.code-editor').get(0);
+				if(editorElem) {
+					var text = ace.edit(editorElem).getValue();
+					$.post('/service/text?path=' + encodeURIComponent(path + fileName), { text: text });
+				}
+			}
 		});
 
 		$('.js-reload').on('click', function (event) {

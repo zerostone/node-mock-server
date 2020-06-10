@@ -1,4 +1,4 @@
-<div data-tpl="tab-pane-mock" class="tab-pane active" id="_<%=service.id%>_<%=method.id%>_mock">
+<div data-tpl="tab-pane-mock" class="tab-pane tab-pane-mock active" id="_<%=service.id%>_<%=method.id%>_mock">
 	<% var urlMock = urlBase + urlPath + method.pathCleaned;%>
 	<h3>Url:</h3>
 	<p>
@@ -10,14 +10,14 @@
 		<label for="<%=service.id%><%=method.id%>_mockdown">
 			Choose an expected response:
 		</label>
-		<p>
+		<!-- <p>
 			<a
 				class="btn btn-default btn-xs js-open-ide"
 				data-path="<%=method.path%>/mock"
 			>
 				open directory
 			</a>
-		</p>
+		</p> -->
 		<% for(var m=0; m<method.availableMockResponses.length; m++) { %>
 			<% var mock = method.availableMockResponses[m]; %>
 			<% var checked = mock.isSelected ? 'checked' : ''; %>
@@ -56,6 +56,7 @@
 						name="<%=service.id%><%=method.id%>_mockdown"
 						id="<%=service.id%><%=method.id%><%=m%>"
 						value="<%=mock.name%>"
+						data-allow-edit="<%-showOpenBtn%>"
 					/>
 					<%-label%>
 					<%=mock.name%>
@@ -70,15 +71,15 @@
 						delete
 					</a>
 				<% } if (showOpenBtn) { %>
-					<a
+					<!-- <a
 						class="spacer-left btn btn-default pull-right btn-xs js-open-ide"
 						data-path="<%=method.path%>/mock/<%=mock.name%>"
 					>
 						open
-					</a>
+					</a> -->
 				<% }  %>
 				<% if (showValidateBtn) { %>
-					&nbsp;<a target="_blank" href="<%=urlBase%>/view/response?path=<%=encodeURIComponent(method.basePath);%>&method=<%=method.id%>&expected=<%=mock.name%>">preview</a>
+					<!-- &nbsp;<a target="_blank" href="<%=urlBase%>/view/response?path=<%=encodeURIComponent(method.basePath);%>&method=<%=method.id%>&expected=<%=mock.name%>">preview</a> -->
 					<button
 						class="btn btn-primary btn-xs pull-right js-validate-single"
 						href="#"
@@ -99,6 +100,15 @@
 			data-method="<%=method.id%>"
 		>
 			+ add new response
-		</button>
+		</button>	
+		<div class="response-content" style="margin-top: 16px; height: 300px">
+			<h3>Content</h3>
+			<div class="code-editor" style="border: 1px solid #d3d3d3; height: 260px;">
+
+			</div>
+			<div class="buttons-line text-center" style="margin-top: 5px;">
+				<button class="btn btn-success btn-xs btn-save-json">Save</button>
+			</div>
+		</div>
 	</div>
 </div>

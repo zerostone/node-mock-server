@@ -1,4 +1,4 @@
-<div class="modal fade" tabindex="0" id="_<%=service.id%>_<%=method.id%>" data-tpl="method-modal">
+<div class="modal fade modal-method" tabindex="0" id="_<%=service.id%>_<%=method.id%>" data-tpl="method-modal">
 	<div class="modal-dialog">
 		<div class="modal-content modal-content-with-label">
 			<div class="modal-header">
@@ -19,15 +19,15 @@
 			</div>
 			<div class="modal-body">
 
-				<div class="alert alert-info">
+				<!-- <div class="alert alert-info">
 					<p><%=method.desc.desc%></p>
-				</div>
+				</div> -->
 
 				<% var descFilePath = method.desc.descFilePath%>
 				<% if (descFilePath) { %>
-				<a class="btn btn-default js-open-ide" data-path="<%=descFilePath%>">Open description file</a>
+				<!-- <a class="btn btn-default js-open-ide" data-path="<%=descFilePath%>">Open description file</a>
 				<br/>
-				<br/>
+				<br/> -->
 				<% } %>
 
 				<% if (method.security.length > 1) { %>
