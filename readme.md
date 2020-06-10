@@ -1,4 +1,4 @@
-# node-mock-server
+# node-mocker-server (Copied from node-mock-server)
 
 
 > This repository is copied from https://github.com/smollweide/node-mock-server (based on `v0.25.4`).
